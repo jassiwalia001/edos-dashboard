@@ -1,0 +1,169 @@
+<div class="revenue-container">
+  <!-- Header -->
+  <div class="header-section">
+    <div class="section-content">
+      <h1 class="page-title">💰 Revenue Analytics</h1>
+      <p class="page-subtitle">Track revenue generation and optimize operations</p>
+    </div>
+  </div>
+
+  <!-- Revenue Metrics -->
+  <div class="metrics-section">
+    <div class="section-content">
+      <div class="metrics-grid">
+        <div class="metric-card today">
+          <p class="metric-label">Today's Revenue</p>
+          <p class="metric-amount">${{ revenueData.today }}</p>
+          <p class="metric-trend">+12% vs yesterday</p>
+        </div>
+        <div class="metric-card week">
+          <p class="metric-label">This Week</p>
+          <p class="metric-amount">${{ revenueData.week }}</p>
+          <p class="metric-trend">7-day total</p>
+        </div>
+        <div class="metric-card month">
+          <p class="metric-label">This Month</p>
+          <p class="metric-amount">${{ revenueData.month }}</p>
+          <p class="metric-trend">Month-to-date</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Revenue Breakdown -->
+  <div class="breakdown-section">
+    <div class="section-content">
+      <h2 class="section-subtitle">Revenue by Source</h2>
+      <div class="breakdown-grid">
+        <!-- Sources List -->
+        <div class="sources-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Revenue Today</th>
+                <th>% of Total</th>
+                <th>Trend</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (source of revenueData.bySource; track source.source) {
+                <tr>
+                  <td>{{ source.source }}</td>
+                  <td>${{ source.revenue }}</td>
+                  <td>{{ getPercentage(source.revenue) }}%</td>
+                  <td><span class="trend-up">↑ +8%</span></td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Distribution -->
+        <div class="distribution-card">
+          <h3 class="card-title">Distribution</h3>
+          <div class="distribution-list">
+            <div class="distribution-item">
+              <div class="distribution-header">
+                <span>Peak Shaving</span>
+                <span>42%</span>
+              </div>
+              <div class="distribution-bar">
+                <div class="distribution-fill peak" style="width: 42%"></div>
+              </div>
+            </div>
+            <div class="distribution-item">
+              <div class="distribution-header">
+                <span>EV Charging</span>
+                <span>31%</span>
+              </div>
+              <div class="distribution-bar">
+                <div class="distribution-fill ev" style="width: 31%"></div>
+              </div>
+            </div>
+            <div class="distribution-item">
+              <div class="distribution-header">
+                <span>Arbitrage</span>
+                <span>19%</span>
+              </div>
+              <div class="distribution-bar">
+                <div class="distribution-fill arbitrage" style="width: 19%"></div>
+              </div>
+            </div>
+            <div class="distribution-item">
+              <div class="distribution-header">
+                <span>Other</span>
+                <span>8%</span>
+              </div>
+              <div class="distribution-bar">
+                <div class="distribution-fill other" style="width: 8%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Comparison -->
+  <div class="sites-section">
+    <div class="section-content">
+      <h2 class="section-subtitle">Revenue by Site (Today)</h2>
+      <div class="sites-card">
+        <div class="sites-list">
+          <div class="site-item">
+            <div class="site-info">
+              <p class="site-name">Downtown Hub</p>
+              <p class="site-location">San Francisco, CA</p>
+            </div>
+            <div class="site-revenue">
+              <p class="revenue-amount">$2,450</p>
+              <p class="revenue-percent">19.7% of total</p>
+            </div>
+          </div>
+          <div class="site-item">
+            <div class="site-info">
+              <p class="site-name">Westside Depot</p>
+              <p class="site-location">Los Angeles, CA</p>
+            </div>
+            <div class="site-revenue">
+              <p class="revenue-amount">$3,100</p>
+              <p class="revenue-percent">24.9% of total</p>
+            </div>
+          </div>
+          <div class="site-item">
+            <div class="site-info">
+              <p class="site-name">Northpoint</p>
+              <p class="site-location">Oakland, CA</p>
+            </div>
+            <div class="site-revenue">
+              <p class="revenue-amount">$1,820</p>
+              <p class="revenue-percent">14.6% of total</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recommendations -->
+  <div class="recommendations-section">
+    <div class="section-content">
+      <h2 class="section-subtitle">💡 Optimization Recommendations</h2>
+      <div class="recommendations-list">
+        <div class="recommendation blue">
+          <p class="recommendation-title">Increase Peak Shaving at Downtown Hub</p>
+          <p class="recommendation-text">Currently at 65% capacity. BESS #1 can support 30% more peak shaving revenue.</p>
+        </div>
+        <div class="recommendation green">
+          <p class="recommendation-title">Expand EV Charging at Westside</p>
+          <p class="recommendation-text">Highest revenue efficiency. Add 2 more chargers to capture unmet demand.</p>
+        </div>
+        <div class="recommendation yellow">
+          <p class="recommendation-title">Optimize Northpoint Battery Schedule</p>
+          <p class="recommendation-text">Low revenue despite good efficiency. Rebalance charge/discharge timing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

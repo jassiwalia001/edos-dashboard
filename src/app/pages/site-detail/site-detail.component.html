@@ -1,0 +1,88 @@
+<div class="detail-container">
+  <!-- Back Button -->
+  <div class="back-section">
+    <div class="section-content">
+      <a routerLink="/" class="back-link">← Back to Overview</a>
+    </div>
+  </div>
+
+  <!-- Site Header -->
+  <div class="header-section">
+    <div class="section-content">
+      <h1 class="site-title">{{ site?.name }}</h1>
+      <p class="site-location">{{ site?.location }}</p>
+      <div class="stats-grid">
+        <div class="stat-card revenue">
+          <p class="stat-label">Today's Revenue</p>
+          <p class="stat-value">${{ site?.revenue_today }}</p>
+        </div>
+        <div class="stat-card efficiency">
+          <p class="stat-label">Efficiency</p>
+          <p class="stat-value">{{ site?.efficiency }}%</p>
+        </div>
+        <div class="stat-card assets">
+          <p class="stat-label">Active Assets</p>
+          <p class="stat-value">{{ site?.assets?.length }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Assets Section -->
+  <div class="assets-container">
+    <div class="section-content">
+      <h2 class="section-subtitle">🔋 Energy Assets</h2>
+      <div class="assets-grid">
+        @for (asset of site?.assets; track asset.id) {
+          <div [ngClass]="getAssetCardClass(asset.status)" class="asset-card">
+            <div class="asset-header">
+              <h3 class="asset-name">{{ asset.name }}</h3>
+              <span [ngClass]="getStatusBadge(asset.status)" class="status-badge">
+                {{ asset.status.toUpperCase() }}
+              </span>
+            </div>
+
+            <div class="asset-details">
+              @if (asset.type === 'BESS') {
+                <div class="detail-item">
+                  <p class="detail-label">State of Charge</p>
+                  <div class="soc-container">
+                    <div class="soc-bar">
+                      <div class="soc-fill" [style.width.%]="asset.soc"></div>
+                    </div>
+                    <span class="soc-percent">{{ asset.soc }}%</span>
+                  </div>
+                  <p class="detail-note">Capacity: {{ asset.capacity }} MWh</p>
+                </div>
+              }
+
+              @if (asset.type === 'PV') {
+                <div class="detail-item">
+                  <p class="detail-label">Current Output</p>
+                  <p class="detail-value">{{ asset.power }} kW</p>
+                </div>
+              }
+
+              @if (asset.type === 'EV_CHARGER') {
+                <div class="detail-item">
+                  <p class="detail-label">Power Draw</p>
+                  <p class="detail-value">{{ asset.power }} kW</p>
+                </div>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Real-time Telemetry -->
+  <div class="telemetry-container">
+    <div class="section-content">
+      <h2 class="section-subtitle">📊 Real-time Telemetry</h2>
+      <div class="telemetry-placeholder">
+        <p>Telemetry visualization would go here</p>
+      </div>
+    </div>
+  </div>
+</div>

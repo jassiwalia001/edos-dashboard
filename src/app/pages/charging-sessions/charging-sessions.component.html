@@ -1,0 +1,137 @@
+<div class="charging-container">
+  <!-- Header -->
+  <div class="header-section">
+    <div class="section-content">
+      <h1 class="page-title">⚡ EV Charging Operations</h1>
+      <p class="page-subtitle">Real-time charging session monitoring and analytics</p>
+    </div>
+  </div>
+
+  <!-- Active Sessions Summary -->
+  <div class="summary-section">
+    <div class="section-content">
+      <div class="summary-grid">
+        <div class="summary-card">
+          <p class="summary-label">Active Charging</p>
+          <p class="summary-value">{{ activeCount }}</p>
+        </div>
+        <div class="summary-card">
+          <p class="summary-label">Waiting</p>
+          <p class="summary-value">{{ waitingCount }}</p>
+        </div>
+        <div class="summary-card">
+          <p class="summary-label">Avg SoC Gained</p>
+          <p class="summary-value">+18%</p>
+        </div>
+        <div class="summary-card">
+          <p class="summary-label">Total Power</p>
+          <p class="summary-value">140 kW</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charging Sessions -->
+  <div class="sessions-section">
+    <div class="section-content">
+      <h2 class="section-subtitle">Current Sessions</h2>
+      <div class="sessions-list">
+        @for (session of sessions; track session.chargerId) {
+          <div [ngClass]="getSessionClass(session.status)" class="session-card">
+            <div class="session-header">
+              <div>
+                <h3 class="session-ev-id">{{ session.evId }}</h3>
+                <p class="session-charger">Charger: {{ session.chargerId }}</p>
+              </div>
+              <span [ngClass]="getStatusColor(session.status)" class="status-badge">
+                {{ session.status.toUpperCase() }}
+              </span>
+            </div>
+
+            <div class="session-metrics">
+              <div class="metric">
+                <p class="metric-label">Current SoC</p>
+                <p class="metric-value">{{ session.currentSoC }}%</p>
+              </div>
+              <div class="metric">
+                <p class="metric-label">Target SoC</p>
+                <p class="metric-value">{{ session.targetSoC }}%</p>
+              </div>
+              <div class="metric">
+                <p class="metric-label">Power</p>
+                <p class="metric-value">{{ session.power }} kW</p>
+              </div>
+              @if (session.estimatedComplete) {
+                <div class="metric">
+                  <p class="metric-label">Est. Complete</p>
+                  <p class="metric-value">{{ getTimeRemaining(session.estimatedComplete) }}</p>
+                </div>
+              }
+            </div>
+
+            <!-- SoC Progress Bar -->
+            <div class="progress-section">
+              <div class="progress-header">
+                <span>Progress</span>
+                <span>{{ getProgressPercent(session.currentSoC, session.targetSoC) }}%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" [style.width.%]="getProgressPercent(session.currentSoC, session.targetSoC)"></div>
+              </div>
+            </div>
+
+            <p class="session-started">Started: {{ getTimeAgo(session.startTime) }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Analytics -->
+  <div class="analytics-section">
+    <div class="section-content">
+      <h2 class="section-subtitle">Session Analytics</h2>
+      <div class="analytics-grid">
+        <div class="analytics-card">
+          <h3 class="analytics-title">Charger Utilization</h3>
+          <div class="utilization-list">
+            <div class="utilization-item">
+              <div class="utilization-header">
+                <span>Charger #1</span>
+                <span>87%</span>
+              </div>
+              <div class="utilization-bar">
+                <div class="utilization-fill" style="width: 87%"></div>
+              </div>
+            </div>
+            <div class="utilization-item">
+              <div class="utilization-header">
+                <span>Charger #2</span>
+                <span>65%</span>
+              </div>
+              <div class="utilization-bar">
+                <div class="utilization-fill warning" style="width: 65%"></div>
+              </div>
+            </div>
+            <div class="utilization-item">
+              <div class="utilization-header">
+                <span>Charger #3</span>
+                <span>100%</span>
+              </div>
+              <div class="utilization-bar">
+                <div class="utilization-fill" style="width: 100%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="analytics-card">
+          <h3 class="analytics-title">SoC Distribution</h3>
+          <div class="chart-placeholder">
+            Chart visualization would go here
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

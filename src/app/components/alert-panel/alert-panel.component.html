@@ -1,0 +1,18 @@
+<div [ngClass]="'alert-panel ' + getAlertClass()">
+  <div class="alert-header">
+    <span class="alert-icon">{{ getIcon() }}</span>
+    <h3>{{ alert.title }}</h3>
+    <mat-icon class="close-btn" (click)="onClose()">close</mat-icon>
+  </div>
+  
+  <p class="alert-description">{{ alert.description }}</p>
+  
+  <div class="alert-meta">
+    <span class="alert-time">{{ getTimeAgo(alert.timestamp) }}</span>
+    @if (alert.actionUrl) {
+      <a [routerLink]="alert.actionUrl" class="alert-action">
+        Investigate <mat-icon>arrow_forward</mat-icon>
+      </a>
+    }
+  </div>
+</div>

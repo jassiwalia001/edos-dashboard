@@ -1,0 +1,36 @@
+<header class="header-container">
+  <div class="header-content">
+    <div class="header-brand">
+      <mat-icon class="brand-icon">electric_bolt</mat-icon>
+      <div class="brand-text">
+        <h1>EDOS</h1>
+        <p>Operational Dashboard</p>
+      </div>
+    </div>
+
+    <nav class="header-nav">
+      <a 
+        [routerLink]="'/'" 
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="nav-link">
+        <mat-icon>dashboard</mat-icon>
+        <span>Overview</span>
+      </a>
+      <a 
+        [routerLink]="'/charging'" 
+        routerLinkActive="active"
+        class="nav-link">
+        <mat-icon>battery_charging_full</mat-icon>
+        <span>Charging</span>
+      </a>
+      <a 
+        [routerLink]="'/revenue'" 
+        routerLinkActive="active"
+        class="nav-link">
+        <mat-icon>trending_up</mat-icon>
+        <span>Revenue</span>
+      </a>
+    </nav>
+  </div>
+</header>

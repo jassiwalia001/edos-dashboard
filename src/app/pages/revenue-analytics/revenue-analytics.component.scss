@@ -1,0 +1,384 @@
+.revenue-container {
+  background-color: #f9fafb;
+  min-height: 100vh;
+  padding-bottom: 3rem;
+}
+
+.header-section {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 2rem 0;
+}
+
+.section-content {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.page-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.page-subtitle {
+  color: #6b7280;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.metrics-section {
+  padding: 2rem 0;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.metric-card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  &.today {
+    border-left: 4px solid #22c55e;
+  }
+
+  &.week {
+    border-left: 4px solid #2196f3;
+  }
+
+  &.month {
+    border-left: 4px solid #a855f7;
+  }
+}
+
+.metric-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.metric-amount {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin: 0.5rem 0 0;
+  color: #1f2937;
+}
+
+.metric-trend {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin: 0.5rem 0 0;
+}
+
+.breakdown-section {
+  padding: 2rem 0;
+}
+
+.section-subtitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 1.5rem 0;
+}
+
+.breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) and (max-width: 1200px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.sources-table {
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+      background-color: #f9fafb;
+      border-bottom: 1px solid #e5e7eb;
+
+      th {
+        padding: 1rem 1.5rem;
+        text-align: left;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #1f2937;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid #f3f4f6;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+          background-color: #f9fafb;
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        td {
+          padding: 1rem 1.5rem;
+          font-size: 0.875rem;
+          color: #1f2937;
+
+          &:nth-child(2) {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}
+
+.trend-up {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.distribution-card {
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 1rem 0;
+}
+
+.distribution-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.distribution-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.distribution-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.distribution-bar {
+  width: 100%;
+  height: 0.5rem;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.distribution-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+
+  &.peak {
+    background: linear-gradient(90deg, #2196f3, #1976d2);
+  }
+
+  &.ev {
+    background: linear-gradient(90deg, #22c55e, #16a34a);
+  }
+
+  &.arbitrage {
+    background: linear-gradient(90deg, #fbbf24, #f59e0b);
+  }
+
+  &.other {
+    background: linear-gradient(90deg, #a855f7, #9333ea);
+  }
+}
+
+.sites-section {
+  padding: 2rem 0;
+}
+
+.sites-card {
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  padding: 1.5rem;
+}
+
+.sites-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #f3f4f6;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #f9fafb;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.site-info {
+  flex: 1;
+}
+
+.site-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.site-location {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0.25rem 0 0;
+}
+
+.site-revenue {
+  text-align: right;
+}
+
+.revenue-amount {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #22c55e;
+  margin: 0;
+}
+
+.revenue-percent {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin: 0.25rem 0 0;
+}
+
+.recommendations-section {
+  padding: 2rem 0 3rem;
+}
+
+.recommendations-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.recommendation {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid;
+
+  &.blue {
+    background-color: #eff6ff;
+    border-color: #bfdbfe;
+  }
+
+  &.green {
+    background-color: #f0fdf4;
+    border-color: #bbf7d0;
+  }
+
+  &.yellow {
+    background-color: #fffbeb;
+    border-color: #fde68a;
+  }
+}
+
+.recommendation-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+
+  .blue & {
+    color: #1e40af;
+  }
+
+  .green & {
+    color: #166534;
+  }
+
+  .yellow & {
+    color: #92400e;
+  }
+}
+
+.recommendation-text {
+  font-size: 0.875rem;
+  margin: 0;
+
+  .blue & {
+    color: #1e3a8a;
+  }
+
+  .green & {
+    color: #15803d;
+  }
+
+  .yellow & {
+    color: #78350f;
+  }
+}

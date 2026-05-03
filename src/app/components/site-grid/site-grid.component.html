@@ -1,0 +1,40 @@
+<div class="site-grid">
+  @for (site of sites; track site.id) {
+    <a [routerLink]="'/site/' + site.id" class="site-card">
+      <div class="card-header">
+        <div>
+          <h3 class="site-name">{{ site.name }}</h3>
+          <p class="site-location">{{ site.location }}</p>
+        </div>
+        <div class="revenue-display">
+          <p class="revenue-amount">${{ site.revenue_today }}</p>
+          <p class="revenue-label">today</p>
+        </div>
+      </div>
+
+      <div class="efficiency-section">
+        <div class="efficiency-header">
+          <span class="efficiency-label">Efficiency</span>
+          <span class="efficiency-value">{{ site.efficiency }}%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="site.efficiency"></div>
+        </div>
+      </div>
+
+      <div class="assets-section">
+        <p class="assets-title">Assets</p>
+        <div class="assets-list">
+          @for (asset of site.assets; track asset.type) {
+            <span [ngClass]="getAssetBadgeClass(asset.status)" class="asset-badge">
+              {{ asset.type.replace('_', ' ') }}
+              @if (asset.soc) {
+                <span class="soc-indicator">{{ asset.soc }}%</span>
+              }
+            </span>
+          }
+        </div>
+      </div>
+    </a>
+  }
+</div>

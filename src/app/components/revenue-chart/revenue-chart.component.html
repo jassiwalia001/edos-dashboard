@@ -1,0 +1,18 @@
+<div class="chart-container">
+  <h3 class="chart-title">{{ title }}</h3>
+  <div class="bars-container">
+    @for (item of data; track item.label) {
+      <div class="bar-item">
+        <div class="bar-wrapper">
+          <div 
+            class="bar" 
+            [style.height.%]="(item.value / maxValue) * 100"
+            [style.background-color]="item.color || '#2196f3'">
+          </div>
+        </div>
+        <p class="bar-label">{{ item.label }}</p>
+        <p class="bar-value">${{ item.value }}</p>
+      </div>
+    }
+  </div>
+</div>

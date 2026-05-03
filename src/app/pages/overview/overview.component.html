@@ -1,0 +1,59 @@
+<div class="overview-container">
+  <!-- Critical Alerts Section -->
+  <section class="alerts-section">
+    <div class="section-header">
+      <h2 class="section-title">⚠️ Issues Requiring Attention</h2>
+    </div>
+    <div class="alerts-grid">
+      @for (alert of criticalAlerts; track alert.id) {
+        <app-alert-panel [alert]="alert"></app-alert-panel>
+      }
+    </div>
+    @if (criticalAlerts.length === 0) {
+      <div class="empty-state">
+        ✓ All systems operating normally
+      </div>
+    }
+  </section>
+
+  <!-- Key Metrics -->
+  <section class="metrics-section">
+    <div class="section-header">
+      <h2 class="section-title">📊 Key Metrics</h2>
+    </div>
+    <div class="metrics-grid">
+      <app-asset-card
+        title="Total Sites"
+        value="12"
+        unit="Active"
+        status="good">
+      </app-asset-card>
+      <app-asset-card
+        title="Total BESS"
+        value="24"
+        unit="MWh"
+        status="good">
+      </app-asset-card>
+      <app-asset-card
+        title="EVs Charging"
+        value="47"
+        unit="Sessions"
+        status="warning">
+      </app-asset-card>
+      <app-asset-card
+        title="Today's Revenue"
+        value="$12,450"
+        unit="+8.5%"
+        status="good">
+      </app-asset-card>
+    </div>
+  </section>
+
+  <!-- Sites Overview -->
+  <section class="sites-section">
+    <div class="section-header">
+      <h2 class="section-title">🏢 Site Performance</h2>
+    </div>
+    <app-site-grid [sites]="sites"></app-site-grid>
+  </section>
+</div>
