@@ -118,5 +118,5 @@ The dashboard uses mock data now. To integrate real APIs:
 1. **Real API integration** - Replace MockDataService
 2. **WebSocket for real-time** - Live telemetry updates
 3. **User authentication** - Login & role-based access
-4. **Historical analytics** - Separate "Reports" section
+4. **Historical and forecasting analytics** - Separate "Reports" section with charts displaying forecast data
 5. **Admin panel** - Site configuration
